@@ -70,7 +70,7 @@ function render(){
     let instr={};
     records.forEach(r=>{t[r.shift]++;t.p+=r.planner;t.e+=r.executive;if(r.instructor)instr[r.instructor]=(instr[r.instructor]||0)+1});
 
-    $("report").textContent=`Early       (E1):           ${t.E1}\nDay         (F2, G1, H1):   ${t.F2+t.G1+t.H1}\nAfternoon   (J1, A1, C1):   ${t.J1+t.A1+t.C1}\nNight       (N2, N1):       ${t.N2+t.N1}\n\nExecutive:   ${f(t.e)}\nPlanner:     ${f(t.p)}`;
+    $("report").textContent=`Early       (E1)           ${t.E1}\nDay         (F2, G1, H1)   ${t.F2+t.G1+t.H1}\nAfternoon   (J1, A1, C1)   ${t.J1+t.A1+t.C1}\nNight       (N2, N1)       ${t.N2+t.N1}\n\nExecutive   ${f(t.e)}\nPlanner     ${f(t.p)}`;
 
     $("pt").textContent=f(t.p);$("et").textContent=f(t.e);
     $("st").textContent=records.length;$("tt").textContent=f(t.p+t.e);
