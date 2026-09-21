@@ -70,7 +70,7 @@ function render(){
     let instr={};
     records.forEach(r=>{t[r.shift]++;t.p+=r.planner;t.e+=r.executive;if(r.instructor)instr[r.instructor]=(instr[r.instructor]||0)+1});
 
-        $("report").textContent=`Early     (E1):         ${t.E1}\nDay       (F2, G1, H1):   ${t.F2+t.G1+t.H1}\nAfternoon (J1, A1, C1):   ${t.J1+t.A1+t.C1}\nNight     (N2, N1):    ${t.N2+t.N1}\n\nExecutive:   ${f(t.e)}\nPlanner:     ${f(t.p)}`;
+    $("report").textContent=`Early       (E1):           ${t.E1}\nDay         (F2, G1, H1):   ${t.F2+t.G1+t.H1}\nAfternoon   (J1, A1, C1):   ${t.J1+t.A1+t.C1}\nNight       (N2, N1):       ${t.N2+t.N1}\n\nExecutive:   ${f(t.e)}\nPlanner:     ${f(t.p)}`;
 
     $("pt").textContent=f(t.p);$("et").textContent=f(t.e);
     $("st").textContent=records.length;$("tt").textContent=f(t.p+t.e);
@@ -79,6 +79,6 @@ function render(){
     $("instructorStats").innerHTML=instrList.length?instrList.map(([name,c])=>`<div class="instr-row"><span>${name}</span><span>${c} time${c===1?"":"s"}</span></div>`).join(""):"<div class='muted'>No instructor data yet</div>";
 
     let sorted=records.map((r,i)=>({...r,_i:i})).sort((a,b)=>new Date(a.date)-new Date(b.date));
-    $("history").innerHTML=sorted.length?sorted.map((r,n)=>`<div class="item"><div>${String(n+1).padStart(3,"0")}&nbsp;${r.date}&nbsp;&nbsp;${r.shift}${r.instructor?"&nbsp;&nbsp;"+r.instructor:""}&nbsp;&nbsp;${f(r.executive+r.planner)} hr<div class="muted">Executive ${f(r.executive)} hr · Planner ${f(r.planner)} hr</div></div><button class="delete" onclick="del(${r._i})">Delete</button></div>`).join(""):"<div class='muted'>No shifts recorded yet</div>"}
+    $("history").innerHTML=sorted.length?sorted.map((r,n)=>`<div class="item"><div>${String(n+1).padStart(3,"0")}&nbsp;&nbsp;${r.date}&nbsp;&nbsp;${r.shift}${r.instructor?"&nbsp;&nbsp;"+r.instructor:""}&nbsp;&nbsp;${f(r.executive+r.planner)} hr<div class="muted">Executive ${f(r.executive)} hr · Planner ${f(r.planner)} hr</div></div><button class="delete" onclick="del(${r._i})">Delete</button></div>`).join(""):"<div class='muted'>No shifts recorded yet</div>"}
 $("save").onclick=save;load();
 </script></body></html>
