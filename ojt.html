@@ -46,7 +46,7 @@ function updateTodayPreview(){
     if(!draft.shift||(draft.planner===0&&draft.executive===0)){
         $("todayPreview").style.display="none";return}
     $("todayPreview").style.display="block";
-    $("todayDetails").textContent=`Shift ${draft.shift} · Planner ${f(draft.planner)} hr · Executive ${f(draft.executive)} hr`}
+    $("todayDetails").textContent=`${draft.shift} shift · Executive ${f(draft.executive)} hr · Planner ${f(draft.planner)} hr`}
 async function load(){
     if(!API_URL)records=JSON.parse(localStorage.getItem("ojt_records")||"[]");
     else{let r=await fetch(API_URL+"/api/records");records=await r.json()}render()}
